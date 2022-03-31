@@ -1,0 +1,12 @@
+# Pastas ignoradas
+**/modules
+**/FastReport 6.9.3
+**/__history
+**/__recovery
+**/Win32
+**/Win64
+
+# Arquivos ignorados
+Projeto BD e Documentação/mercurio.mwb.bak
+
+#Extensões ignoradas

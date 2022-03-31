@@ -44,9 +44,9 @@ implementation
 function getUrl(Ambiente : TMercurioAmbiente; Endpoint : string = '') : string;
 begin
   if (Ambiente = amProducao) then
-    result := 'https://back.mercurioapp.com.br' + Endpoint
+    result := 'https://api.tecno.mobi' + Endpoint
   else
-    result := 'http://sandbox.mercurioapp.com.br:7779' + Endpoint;
+    result := 'https://sandbox.tecno.mobi' + Endpoint;
 end;
 
 end.
