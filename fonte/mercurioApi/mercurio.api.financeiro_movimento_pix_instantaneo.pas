@@ -658,7 +658,7 @@ begin
   end;
 
   try
-    url := getUrl(Ambiente, urlBoleto) + params.toParams;
+    url := getUrl(Ambiente, urlPixInstantaneo) + params.toParams;
     Api.HeaderCustomAdd('Authorization', 'Bearer '+ Auth.Token);
     result := TResponseFinanceiroMovimentoPixInstantaneoGet.new(Api.Get(url));
   except
