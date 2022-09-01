@@ -7,10 +7,14 @@ uses mercurio.api.functions, System.Generics.Collections, Json;
 type
   TRegistros = class
   private
+    [Coluna('status')]
+    FStatus: string;
     [Coluna('fmp_idpk')]
-    FFmp_idpk: string;
+    FFmp_idpk: integer;
     [Coluna('fmp_pix_tipo')]
     FFmp_pix_tipo: string;
+    [Coluna('fmp_link_compartilhamento')]
+    FFmp_link_compartilhamento: string;
     [Coluna('fmp_link_qrcode')]
     FFmp_link_qrcode: string;
     [Coluna('fmp_hash')]
@@ -25,8 +29,10 @@ type
 
     constructor CreateWithJson(const value : TJSonObject);
     constructor CreateWithJsonString(const value : string);
-    property Fmp_idpk: string read FFmp_idpk write FFmp_idpk;
+    property Status: string read FStatus write FStatus;
+    property Fmp_idpk: integer read FFmp_idpk write FFmp_idpk;
     property Fmp_pix_tipo: string read FFmp_pix_tipo write FFmp_pix_tipo;
+    property Fmp_link_compartilhamento: string read FFmp_link_compartilhamento write FFmp_link_compartilhamento;
     property Fmp_link_qrcode: string read FFmp_link_qrcode write FFmp_link_qrcode;
     property Fmp_hash: string read FFmp_hash write FFmp_hash;
     property Fmp_descricao: string read FFmp_descricao write FFmp_descricao;
@@ -37,6 +43,8 @@ type
   private
     [Coluna('registros')]
     FRegistros: TList<TRegistros>;
+    [Coluna('status')]
+    FStatus: string;
     [Coluna('codigo')]
     FCodigo: string;
     [Coluna('tag')]
@@ -45,8 +53,6 @@ type
     FMensagem: string;
     [Coluna('mensagem_original')]
     FMensagem_original: string;
-    [Coluna('status')]
-    FStatus: string;
   public
     constructor Create;
     destructor Destroy; override;
@@ -54,11 +60,11 @@ type
     constructor CreateWithJson(const value : TJSonObject);
     constructor CreateWithJsonString(const value : string);
     property Registros: TList<TRegistros> read FRegistros write FRegistros;
+    property Status: string read FStatus write FStatus;
     property Codigo: string read FCodigo write FCodigo;
     property Tag: string read FTag write FTag;
     property Mensagem: string read FMensagem write FMensagem;
     property Mensagem_original: string read FMensagem_original write FMensagem_original;
-    property Status: string read FStatus write FStatus;
   end;
 
 implementation
@@ -83,8 +89,10 @@ begin
   if (value = nil) then
     exit;
 
-  try value.TryGetValue<string>('fmp_idpk', self.FFmp_idpk); except end;
+  try value.TryGetValue<string>('status', self.FStatus); except end;
+  try value.TryGetValue<integer>('fmp_idpk', self.FFmp_idpk); except end;
   try value.TryGetValue<string>('fmp_pix_tipo', self.FFmp_pix_tipo); except end;
+  try value.TryGetValue<string>('fmp_link_compartilhamento', self.FFmp_link_compartilhamento); except end;
   try value.TryGetValue<string>('fmp_link_qrcode', self.FFmp_link_qrcode); except end;
   try value.TryGetValue<string>('fmp_hash', self.FFmp_hash); except end;
   try value.TryGetValue<string>('fmp_descricao', self.FFmp_descricao); except end;
@@ -146,11 +154,11 @@ begin
       end;
   except
   end;
+  try value.TryGetValue<string>('status', self.FStatus); except end;
   try value.TryGetValue<string>('codigo', self.FCodigo); except end;
   try value.TryGetValue<string>('tag', self.FTag); except end;
   try value.TryGetValue<string>('mensagem', self.FMensagem); except end;
   try value.TryGetValue<string>('mensagem_original', self.FMensagem_original); except end;
-  try value.TryGetValue<string>('status', self.FStatus); except end;
 end;
 
 constructor TResponseClassFinanceiroMovimentoPixInstantaneoPost.CreateWithJsonString(const value : string);

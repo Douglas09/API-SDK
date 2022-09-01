@@ -1,7 +1,7 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
         <ProjectGuid>{5C30EC4A-174F-4727-A06A-88FA19DC4019}</ProjectGuid>
-        <ProjectVersion>19.2</ProjectVersion>
+        <ProjectVersion>19.3</ProjectVersion>
         <FrameworkType>FMX</FrameworkType>
         <Base>True</Base>
         <Config Condition="'$(Config)'==''">Debug</Config>
@@ -25,16 +25,6 @@
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='iOSDevice64' and '$(Base)'=='true') or '$(Base_iOSDevice64)'!=''">
         <Base_iOSDevice64>true</Base_iOSDevice64>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='iOSSimulator' and '$(Base)'=='true') or '$(Base_iOSSimulator)'!=''">
-        <Base_iOSSimulator>true</Base_iOSSimulator>
-        <CfgParent>Base</CfgParent>
-        <Base>true</Base>
-    </PropertyGroup>
-    <PropertyGroup Condition="('$(Platform)'=='OSX64' and '$(Base)'=='true') or '$(Base_OSX64)'!=''">
-        <Base_OSX64>true</Base_OSX64>
         <CfgParent>Base</CfgParent>
         <Base>true</Base>
     </PropertyGroup>
@@ -175,36 +165,6 @@
         <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
         <iPad_Notification40>$(BDS)\bin\Artwork\iOS\iPad\FM_NotificationIcon_40x40.png</iPad_Notification40>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_iOSSimulator)'!=''">
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDevelopmentRegion=en;CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleInfoDictionaryVersion=7.1;CFBundleVersion=1.0.0;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;LSRequiresIPhoneOS=true;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);UIDeviceFamily=iPhone &amp; iPad;NSLocationAlwaysUsageDescription=The reason for accessing the location information of the user;NSLocationWhenInUseUsageDescription=The reason for accessing the location information of the user;NSLocationAlwaysAndWhenInUseUsageDescription=The reason for accessing the location information of the user;UIBackgroundModes=;NSContactsUsageDescription=The reason for accessing the contacts;NSPhotoLibraryUsageDescription=The reason for accessing the photo library;NSPhotoLibraryAddUsageDescription=The reason for adding to the photo library;NSCameraUsageDescription=The reason for accessing the camera;NSFaceIDUsageDescription=The reason for accessing the face id;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSSiriUsageDescription=The reason for accessing Siri;ITSAppUsesNonExemptEncryption=false;NSBluetoothAlwaysUsageDescription=The reason for accessing bluetooth;NSBluetoothPeripheralUsageDescription=The reason for accessing bluetooth peripherals;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSMotionUsageDescription=The reason for accessing the accelerometer;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
-        <VerInfo_UIDeviceFamily>iPhoneAndiPad</VerInfo_UIDeviceFamily>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <iOS_AppStore1024>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_1024x1024.png</iOS_AppStore1024>
-        <iPhone_AppIcon120>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_120x120.png</iPhone_AppIcon120>
-        <iPhone_AppIcon180>$(BDS)\bin\Artwork\iOS\iPhone\FM_ApplicationIcon_180x180.png</iPhone_AppIcon180>
-        <iPhone_Launch2x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_2x.png</iPhone_Launch2x>
-        <iPhone_LaunchDark2x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImageDark_2x.png</iPhone_LaunchDark2x>
-        <iPhone_Launch3x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImage_3x.png</iPhone_Launch3x>
-        <iPhone_LaunchDark3x>$(BDS)\bin\Artwork\iOS\iPhone\FM_LaunchImageDark_3x.png</iPhone_LaunchDark3x>
-        <iPhone_Spotlight80>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_80x80.png</iPhone_Spotlight80>
-        <iPhone_Spotlight120>$(BDS)\bin\Artwork\iOS\iPhone\FM_SpotlightSearchIcon_120x120.png</iPhone_Spotlight120>
-        <iPhone_Setting58>$(BDS)\bin\Artwork\iOS\iPhone\FM_SettingIcon_58x58.png</iPhone_Setting58>
-        <iPhone_Setting87>$(BDS)\bin\Artwork\iOS\iPhone\FM_SettingIcon_87x87.png</iPhone_Setting87>
-        <iPhone_Notification40>$(BDS)\bin\Artwork\iOS\iPhone\FM_NotificationIcon_40x40.png</iPhone_Notification40>
-        <iPhone_Notification60>$(BDS)\bin\Artwork\iOS\iPhone\FM_NotificationIcon_60x60.png</iPhone_Notification60>
-        <iPad_AppIcon152>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_152x152.png</iPad_AppIcon152>
-        <iPad_AppIcon167>$(BDS)\bin\Artwork\iOS\iPad\FM_ApplicationIcon_167x167.png</iPad_AppIcon167>
-        <iPad_Launch2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImage_2x.png</iPad_Launch2x>
-        <iPad_LaunchDark2x>$(BDS)\bin\Artwork\iOS\iPad\FM_LaunchImageDark_2x.png</iPad_LaunchDark2x>
-        <iPad_SpotLight80>$(BDS)\bin\Artwork\iOS\iPad\FM_SpotlightSearchIcon_80x80.png</iPad_SpotLight80>
-        <iPad_Setting58>$(BDS)\bin\Artwork\iOS\iPad\FM_SettingIcon_58x58.png</iPad_Setting58>
-        <iPad_Notification40>$(BDS)\bin\Artwork\iOS\iPad\FM_NotificationIcon_40x40.png</iPad_Notification40>
-    </PropertyGroup>
-    <PropertyGroup Condition="'$(Base_OSX64)'!=''">
-        <VerInfo_Keys>CFBundleName=$(MSBuildProjectName);CFBundleDisplayName=$(MSBuildProjectName);CFBundleIdentifier=$(MSBuildProjectName);CFBundleVersion=1.0.0;CFBundleShortVersionString=1.0.0;CFBundlePackageType=APPL;CFBundleSignature=????;CFBundleAllowMixedLocalizations=YES;CFBundleExecutable=$(MSBuildProjectName);NSHighResolutionCapable=true;LSApplicationCategoryType=public.app-category.utilities;NSLocationUsageDescription=The reason for accessing the location information of the user;NSContactsUsageDescription=The reason for accessing the contacts;NSCalendarsUsageDescription=The reason for accessing the calendar data;NSRemindersUsageDescription=The reason for accessing the reminders;NSCameraUsageDescription=The reason for accessing the camera;NSMicrophoneUsageDescription=The reason for accessing the microphone;NSMotionUsageDescription=The reason for accessing the accelerometer;NSDesktopFolderUsageDescription=The reason for accessing the Desktop folder;NSDocumentsFolderUsageDescription=The reason for accessing the Documents folder;NSDownloadsFolderUsageDescription=The reason for accessing the Downloads folder;NSNetworkVolumesUsageDescription=The reason for accessing files on a network volume;NSRemovableVolumesUsageDescription=The reason for accessing files on a removable volume;NSSpeechRecognitionUsageDescription=The reason for requesting to send user data to Apple&apos;s speech recognition servers</VerInfo_Keys>
-        <BT_BuildType>Debug</BT_BuildType>
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-    </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;RESTComponents;fmxase;DBXDb2Driver;DBXInterBaseDriver;vclactnband;ACBr_NF3e;vclFireDAC;ACBr_TEFD;AdobePrint;bindcompvclsmp;emsclientfiredac;tethering;svnui;DataSnapFireDAC;ACBr_SATWS;FireDACADSDriver;ACBr_BPeDabpeESCPOS;ACBr_BPe;frx27;DBXMSSQLDriver;DatasnapConnectorsFreePascal;FireDACMSSQLDriver;ACBr_EDI;vcltouch;ACBr_NFe;ACBr_ONE;vcldb;bindcompfmx;svn;ACBr_NFeDanfeFR;DBXOracleDriver;inetdb;ACBr_NFeDanfeESCPOS;CEF4Delphi;ACBr_Diversos;ACBr_GNREGuiaFR;ACBr_LCDPR;emsedge;fmx;FireDACIBDriver;fmxdae;vcledge;ACBr_CTeDacteFR;ACBr_SATExtratoFR;ACBr_Ponto;FireDACDBXDriver;dbexpress;IndyCore;ACBr_NFSeDanfseFR;vclx;dsnap;emsclient;DataSnapCommon;FireDACCommon;RESTBackendComponents;DataSnapConnectors;ACBR_DeSTDA;VCLRESTComponents;ACBr_Reinf;soapserver;ACBr_SAT;vclie;bindengine;DBXMySQLDriver;CloudService;FireDACOracleDriver;FireDACMySQLDriver;DBXFirebirdDriver;ACBr_PAF;ACBr_SATECFVirtual;ACBr_Sintegra;FireDACCommonODBC;FireDACCommonDriver;ACBr_GNRE;DataSnapClient;ACBr_ADRCST;inet;IndyIPCommon;bindcompdbx;ACBr_TCP;vcl;IndyIPServer;DBXSybaseASEDriver;ACBr_CTe;ACBr_SATExtratoESCPOS;IndySystem;FireDACDb2Driver;bindcompvclwinx;ACBr_Integrador;dsnapcon;ACBr_PagFor;ACBre_Social;FireDACMSAccDriver;fmxFireDAC;FireDACInfxDriver;vclimg;ACBr_SPEDImportar;FireDAC;ACBr_SPED;ACBr_MDFe;emshosting;ACBr_Comum;FireDACSqliteDriver;FireDACPgDriver;ACBr_LFD;FireDACASADriver;DBXOdbcDriver;FireDACTDataDriver;soaprtl;DbxCommonDriver;ACBr_CIOT;DataSnapServer;xmlrtl;soapmidas;DataSnapNativeClient;fmxobj;vclwinx;FireDACDSDriver;rtl;emsserverresource;DbxClientDriver;ACBr_OpenSSL;DBXSybaseASADriver;teste;CustomIPTransport;vcldsnap;SampleListViewMultiDetailAppearancePackage;ACBr_Convenio115;bindcomp;appanalytics;frxADO27;DBXInformixDriver;ACBr_Serial;nTrayIcon;IndyIPClient;bindcompvcl;frxe27;ACBr_BlocoX;dbxcds;VclSmp;frxDBX27;adortl;FireDACODBCDriver;ACBr_NFCeECFVirtual;ACBr_BoletoFR;DataSnapIndy10ServerTransport;frxcs27;ACBr_Boleto;ACBr_ANe;dsnapxml;DataSnapProviderClient;dbrtl;IndyProtocols;inetdbxpress;FireDACMongoDBDriver;Whats4Delphi;ACBr_SEF2;ACBr_MDFeDamdfeFR;ACBr_NFSe;ACBr_NF3eDANF3eESCPOS;ACBr_MTER;DataSnapServerMidas;$(DCC_UsePackage)</DCC_UsePackage>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
@@ -266,88 +226,89 @@
             <Form>FrmPrincipal</Form>
             <FormType>fmx</FormType>
         </DCCReference>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.login.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.aplicativo.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.base64.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.classes.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.cliente.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.communication.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.consts.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.functions.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.parent.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.sistema.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.empresa.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.base64.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.types.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.cliente.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.fornecedor.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.transportador.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.produto.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.usuario.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.estoque.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_conta.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_boleto.Liquidar.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_boleto.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_pix_instantaneo.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\mercurio.api.forma_pagamento.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.logar.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.renovar.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.sistema.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.post.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.put.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.delete.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.putLogotipo.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.putCertificado.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuario.recuperarSenha.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuario.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.fornecedor.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.functions.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.login.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.parent.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.produto.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.sistema.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.transportador.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.types.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.usuario.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.usuario_empresa_push_notification.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.post.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.aplicativo.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.delete.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.get.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.getDocumentoExiste.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.post.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.put.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.cliente.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.post.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.put.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.putCertificado.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.empresa.putLogotipo.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.getManual.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.post.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.postManual.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroConta.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPix.getComprovantePagamentoPDF.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.post.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.formaPagamento.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.delete.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.get.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.getDocumentoExiste.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.post.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.put.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.fornecedor.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.logar.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.logof.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.renovar.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.delete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.post.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.put.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.sistema.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.templateUsuarioTipo.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.delete.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.get.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.getDocumentoExiste.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.post.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.put.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.transportador.delete.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.post.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.put.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.produto.delete.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.getManual.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.estoque.postManual.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.formaPagamento.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.login.logof.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_pix_instantaneo.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.post.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPixInstantaneo.delete.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_conta.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroConta.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.usuario_empresa_push_notification.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationGet.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuario.get.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuario.recuperarSenha.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationDelete.pas"/>
+        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationGet.pas"/>
         <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationPost.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPix.getComprovantePagamentoPDF.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.templateUsuarioTipo.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.aplicativo.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.response.aplicativo.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.get.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.post.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\response\mercurio.api.financeiro_movimento_boleto.delete.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_boleto.Liquidar.pas"/>
-        <DCCReference Include="..\fonte\mercurioApi\mercurio.api.financeiro_movimento_boleto.pas"/>
-        <BuildConfiguration Include="Release">
-            <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
@@ -361,17 +322,18 @@
                 </Source>
             </Delphi.Personality>
             <Deployment Version="3">
-                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
-                    <Platform Name="OSX32">
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libcgunwind.1.0.dylib" Class="DependencyModule">
+                <DeployFile LocalName="Win32\Debug\BackendSdk.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>BackendSdk.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="$(BDS)\Redist\iossimulator\libpcre.dylib" Class="DependencyModule">
                     <Platform Name="iOSSimulator">
                         <Overwrite>true</Overwrite>
                     </Platform>
@@ -382,9 +344,8 @@
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
-                <DeployFile LocalName="Win32\Debug\BackendSdk.exe" Configuration="Debug" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>BackendSdk.exe</RemoteName>
+                <DeployFile LocalName="$(BDS)\Redist\osx32\libcgunwind.1.0.dylib" Class="DependencyModule">
+                    <Platform Name="OSX32">
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>
@@ -711,6 +672,11 @@
                         <Operation>1</Operation>
                         <Extensions>.framework</Extensions>
                     </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.framework</Extensions>
+                    </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
                     </Platform>
@@ -734,6 +700,11 @@
                         <Extensions>.dylib</Extensions>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
+                    <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
@@ -766,6 +737,11 @@
                         <Operation>1</Operation>
                         <Extensions>.dylib</Extensions>
                     </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                        <Extensions>.dylib</Extensions>
+                    </Platform>
                     <Platform Name="Win32">
                         <Operation>0</Operation>
                         <Extensions>.bpl</Extensions>
@@ -792,6 +768,10 @@
                         <Operation>0</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
+                        <Operation>0</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
                         <RemoteDir>Contents\Resources\StartUp\</RemoteDir>
                         <Operation>0</Operation>
                     </Platform>
@@ -1060,6 +1040,10 @@
                         <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>..\$(PROJECTNAME).app.dSYM\Contents\Resources\DWARF</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXEntitlements">
                     <Platform Name="OSX32">
@@ -1067,6 +1051,10 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>..\</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
                         <RemoteDir>..\</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -1080,6 +1068,10 @@
                         <RemoteDir>Contents</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
+                    <Platform Name="OSXARM64">
+                        <RemoteDir>Contents</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
                 </DeployClass>
                 <DeployClass Name="ProjectOSXResource">
                     <Platform Name="OSX32">
@@ -1087,6 +1079,10 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\Resources</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
                         <RemoteDir>Contents\Resources</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -1117,6 +1113,10 @@
                         <Operation>1</Operation>
                     </Platform>
                     <Platform Name="OSX64">
+                        <RemoteDir>Contents\MacOS</RemoteDir>
+                        <Operation>1</Operation>
+                    </Platform>
+                    <Platform Name="OSXARM64">
                         <RemoteDir>Contents\MacOS</RemoteDir>
                         <Operation>1</Operation>
                     </Platform>
@@ -1158,24 +1158,22 @@
                         <Operation>1</Operation>
                     </Platform>
                 </DeployClass>
-                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSX32" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
-                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="iOSDevice64" Name="$(PROJECTNAME).app"/>
+                <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="iOSSimulator" Name="$(PROJECTNAME).app"/>
             </Deployment>
             <Platforms>
                 <Platform value="Android">True</Platform>
                 <Platform value="Android64">True</Platform>
                 <Platform value="iOSDevice64">True</Platform>
-                <Platform value="iOSSimulator">False</Platform>
-                <Platform value="OSX64">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">True</Platform>
             </Platforms>

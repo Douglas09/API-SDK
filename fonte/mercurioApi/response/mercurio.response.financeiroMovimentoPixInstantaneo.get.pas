@@ -17,6 +17,8 @@ type
     FFmp_pagamento_data: string;
     [Coluna('fmp_pagador_agencia')]
     FFmp_pagador_agencia: string;
+    [Coluna('fmp_pagador_link_url')]
+    FFmp_pagador_link_url: string;
     [Coluna('fmp_pagador_documento')]
     FFmp_pagador_documento: string;
     [Coluna('fmp_pagador_conta_tipo')]
@@ -25,8 +27,6 @@ type
     FFmp_pagamento_transacao_id: string;
     [Coluna('fmp_cobranca_valor_recebido')]
     FFmp_cobranca_valor_recebido: double;
-    [Coluna('fmp_pagador_link_url')]
-    FFmp_pagador_link_url : string;
   public
     constructor Create;
     destructor Destroy; override;
@@ -38,27 +38,11 @@ type
     property Fmp_pagador_conta: string read FFmp_pagador_conta write FFmp_pagador_conta;
     property Fmp_pagamento_data: string read FFmp_pagamento_data write FFmp_pagamento_data;
     property Fmp_pagador_agencia: string read FFmp_pagador_agencia write FFmp_pagador_agencia;
+    property Fmp_pagador_link_url: string read FFmp_pagador_link_url write FFmp_pagador_link_url;
     property Fmp_pagador_documento: string read FFmp_pagador_documento write FFmp_pagador_documento;
     property Fmp_pagador_conta_tipo: string read FFmp_pagador_conta_tipo write FFmp_pagador_conta_tipo;
     property Fmp_pagamento_transacao_id: string read FFmp_pagamento_transacao_id write FFmp_pagamento_transacao_id;
     property Fmp_cobranca_valor_recebido: double read FFmp_cobranca_valor_recebido write FFmp_cobranca_valor_recebido;
-    property Fmp_pagador_link_url : string read FFmp_pagador_link_url write FFmp_pagador_link_url;
-  end;
-
-  TDevolucao = class
-  private
-    [Coluna('fmp_devolucao_data')]
-    FFmp_devolucao_data: string;
-    [Coluna('fmp_devolucao_transacao_id')]
-    FFmp_devolucao_transacao_id: string;
-  public
-    constructor Create;
-    destructor Destroy; override;
-
-    constructor CreateWithJson(const value : TJSonObject);
-    constructor CreateWithJsonString(const value : string);
-    property Fmp_devolucao_data: string read FFmp_devolucao_data write FFmp_devolucao_data;
-    property Fmp_devolucao_transacao_id: string read FFmp_devolucao_transacao_id write FFmp_devolucao_transacao_id;
   end;
 
   TRegistros = class
@@ -72,7 +56,9 @@ type
     [Coluna('fmp_taxa')]
     FFmp_taxa: double;
     [Coluna('devolucao')]
-    FDevolucao: TDevolucao;
+    FDevolucao: string;
+    [Coluna('fmp_chave')]
+    FFmp_chave: string;
     [Coluna('fmp_multa')]
     FFmp_multa: double;
     [Coluna('fmp_valor')]
@@ -91,6 +77,8 @@ type
     FFmp_pix_tipo: string;
     [Coluna('fmp_descricao')]
     FFmp_descricao: string;
+    [Coluna('fmp_instrucao')]
+    FFmp_instrucao: string;
     [Coluna('fmp_sacado_uf')]
     FFmp_sacado_uf: string;
     [Coluna('fmp_gerado_por')]
@@ -123,6 +111,8 @@ type
     FFmp_sacado_cidade: string;
     [Coluna('fmp_webhook_token')]
     FFmp_webhook_token: string;
+    [Coluna('fmp_data_expiracao')]
+    FFmp_data_expiracao: string;
     [Coluna('fmp_desconto_valor')]
     FFmp_desconto_valor: double;
     [Coluna('fmp_sacado_cnpj_cpf')]
@@ -131,8 +121,12 @@ type
     FFmp_sacado_endereco: string;
     [Coluna('fmp_ultima_alteracao')]
     FFmp_ultima_alteracao: string;
+    [Coluna('fmp_cobranca_gerada_por')]
+    FFmp_cobranca_gerada_por: integer;
     [Coluna('fmp_financeiro_conta_idpk')]
     FFmp_financeiro_conta_idpk: integer;
+    [Coluna('fmp_link_compartilhamento')]
+    FFmp_link_compartilhamento: string;
     [Coluna('fmp_sacado_endereco_numero')]
     FFmp_sacado_endereco_numero: string;
     [Coluna('fmp_cobranca_valor_recebido')]
@@ -153,7 +147,8 @@ type
     property Fmp_hash: string read FFmp_hash write FFmp_hash;
     property Fmp_idpk: integer read FFmp_idpk write FFmp_idpk;
     property Fmp_taxa: double read FFmp_taxa write FFmp_taxa;
-    property Devolucao: TDevolucao read FDevolucao write FDevolucao;
+    property Devolucao: string read FDevolucao write FDevolucao;
+    property Fmp_chave: string read FFmp_chave write FFmp_chave;
     property Fmp_multa: double read FFmp_multa write FFmp_multa;
     property Fmp_valor: double read FFmp_valor write FFmp_valor;
     property Pagamento: TPagamento read FPagamento write FPagamento;
@@ -163,6 +158,7 @@ type
     property Fmp_link_url: string read FFmp_link_url write FFmp_link_url;
     property Fmp_pix_tipo: string read FFmp_pix_tipo write FFmp_pix_tipo;
     property Fmp_descricao: string read FFmp_descricao write FFmp_descricao;
+    property Fmp_instrucao: string read FFmp_instrucao write FFmp_instrucao;
     property Fmp_sacado_uf: string read FFmp_sacado_uf write FFmp_sacado_uf;
     property Fmp_gerado_por: string read FFmp_gerado_por write FFmp_gerado_por;
     property Fmp_sacado_cep: string read FFmp_sacado_cep write FFmp_sacado_cep;
@@ -179,11 +175,14 @@ type
     property Fmp_sacado_bairro: string read FFmp_sacado_bairro write FFmp_sacado_bairro;
     property Fmp_sacado_cidade: string read FFmp_sacado_cidade write FFmp_sacado_cidade;
     property Fmp_webhook_token: string read FFmp_webhook_token write FFmp_webhook_token;
+    property Fmp_data_expiracao: string read FFmp_data_expiracao write FFmp_data_expiracao;
     property Fmp_desconto_valor: double read FFmp_desconto_valor write FFmp_desconto_valor;
     property Fmp_sacado_cnpj_cpf: string read FFmp_sacado_cnpj_cpf write FFmp_sacado_cnpj_cpf;
     property Fmp_sacado_endereco: string read FFmp_sacado_endereco write FFmp_sacado_endereco;
     property Fmp_ultima_alteracao: string read FFmp_ultima_alteracao write FFmp_ultima_alteracao;
+    property Fmp_cobranca_gerada_por: integer read FFmp_cobranca_gerada_por write FFmp_cobranca_gerada_por;
     property Fmp_financeiro_conta_idpk: integer read FFmp_financeiro_conta_idpk write FFmp_financeiro_conta_idpk;
+    property Fmp_link_compartilhamento: string read FFmp_link_compartilhamento write FFmp_link_compartilhamento;
     property Fmp_sacado_endereco_numero: string read FFmp_sacado_endereco_numero write FFmp_sacado_endereco_numero;
     property Fmp_cobranca_valor_recebido: double read FFmp_cobranca_valor_recebido write FFmp_cobranca_valor_recebido;
     property Fmp_financeiro_conta_idpk_2: string read FFmp_financeiro_conta_idpk_2 write FFmp_financeiro_conta_idpk_2;
@@ -195,12 +194,12 @@ type
   private
     [Coluna('registros')]
     FRegistros: TList<TRegistros>;
-    [Coluna('total_registros')]
-    FTotal_registros : integer;
     [Coluna('status')]
     FStatus: string;
     [Coluna('codigo')]
     FCodigo: string;
+    [Coluna('total_registros')]
+    FTotal_registros: integer;
     [Coluna('tag')]
     FTag: string;
     [Coluna('mensagem')]
@@ -214,9 +213,9 @@ type
     constructor CreateWithJson(const value : TJSonObject);
     constructor CreateWithJsonString(const value : string);
     property Registros: TList<TRegistros> read FRegistros write FRegistros;
-    property Total_registros : integer read FTotal_registros write FTotal_registros;
     property Status: string read FStatus write FStatus;
     property Codigo: string read FCodigo write FCodigo;
+    property Total_registros: integer read FTotal_registros write FTotal_registros;
     property Tag: string read FTag write FTag;
     property Mensagem: string read FMensagem write FMensagem;
     property Mensagem_original: string read FMensagem_original write FMensagem_original;
@@ -249,47 +248,14 @@ begin
   try value.TryGetValue<string>('fmp_pagador_conta', self.FFmp_pagador_conta); except end;
   try value.TryGetValue<string>('fmp_pagamento_data', self.FFmp_pagamento_data); except end;
   try value.TryGetValue<string>('fmp_pagador_agencia', self.FFmp_pagador_agencia); except end;
+  try value.TryGetValue<string>('fmp_pagador_link_url', self.FFmp_pagador_link_url); except end;
   try value.TryGetValue<string>('fmp_pagador_documento', self.FFmp_pagador_documento); except end;
   try value.TryGetValue<string>('fmp_pagador_conta_tipo', self.FFmp_pagador_conta_tipo); except end;
   try value.TryGetValue<string>('fmp_pagamento_transacao_id', self.FFmp_pagamento_transacao_id); except end;
   try value.TryGetValue<double>('fmp_cobranca_valor_recebido', self.FFmp_cobranca_valor_recebido); except end;
-  try value.TryGetValue<string>('fmp_pagador_link_url', self.FFmp_pagador_link_url); except end;
 end;
 
 constructor TPagamento.CreateWithJsonString(const value : string);
-var obj : TJSONObject;
-begin
-  obj := TJSONObject(TJSONObject.ParseJSONValue(value));
-  try
-    self.CreateWithJson(obj);
-  finally
-    myFreeAndNil(obj);
-  end;
-end;
-
-{ TDevolucao }
-
-constructor TDevolucao.Create;
-begin
-end;
-
-destructor TDevolucao.Destroy;
-begin
-
-  inherited;
-end;
-
-constructor TDevolucao.CreateWithJson(const value : TJSonObject);
-begin
-  self.Create;
-  if (value = nil) then
-    exit;
-
-  try value.TryGetValue<string>('fmp_devolucao_data', self.FFmp_devolucao_data); except end;
-  try value.TryGetValue<string>('fmp_devolucao_transacao_id', self.FFmp_devolucao_transacao_id); except end;
-end;
-
-constructor TDevolucao.CreateWithJsonString(const value : string);
 var obj : TJSONObject;
 begin
   obj := TJSONObject(TJSONObject.ParseJSONValue(value));
@@ -304,13 +270,11 @@ end;
 
 constructor TRegistros.Create;
 begin
-  Devolucao := TDevolucao.Create;
   Pagamento := TPagamento.Create;
 end;
 
 destructor TRegistros.Destroy;
 begin
-  myFreeAndNil(Devolucao);
   myFreeAndNil(Pagamento);
 
   inherited;
@@ -328,15 +292,8 @@ begin
   try value.TryGetValue<string>('fmp_hash', self.FFmp_hash); except end;
   try value.TryGetValue<integer>('fmp_idpk', self.FFmp_idpk); except end;
   try value.TryGetValue<double>('fmp_taxa', self.FFmp_taxa); except end;
-  try
-    value.TryGetValue<TJSONObject>('devolucao', obj);
-    if (obj <> nil) then
-    begin
-      myFreeAndNil(self.FDevolucao);
-      self.FDevolucao := TDevolucao.CreateWithJson(obj);
-    end;
-  except
-  end;
+  try value.TryGetValue<string>('devolucao', self.FDevolucao); except end;
+  try value.TryGetValue<string>('fmp_chave', self.FFmp_chave); except end;
   try value.TryGetValue<double>('fmp_multa', self.FFmp_multa); except end;
   try value.TryGetValue<double>('fmp_valor', self.FFmp_valor); except end;
   try
@@ -354,6 +311,7 @@ begin
   try value.TryGetValue<string>('fmp_link_url', self.FFmp_link_url); except end;
   try value.TryGetValue<string>('fmp_pix_tipo', self.FFmp_pix_tipo); except end;
   try value.TryGetValue<string>('fmp_descricao', self.FFmp_descricao); except end;
+  try value.TryGetValue<string>('fmp_instrucao', self.FFmp_instrucao); except end;
   try value.TryGetValue<string>('fmp_sacado_uf', self.FFmp_sacado_uf); except end;
   try value.TryGetValue<string>('fmp_gerado_por', self.FFmp_gerado_por); except end;
   try value.TryGetValue<string>('fmp_sacado_cep', self.FFmp_sacado_cep); except end;
@@ -370,11 +328,14 @@ begin
   try value.TryGetValue<string>('fmp_sacado_bairro', self.FFmp_sacado_bairro); except end;
   try value.TryGetValue<string>('fmp_sacado_cidade', self.FFmp_sacado_cidade); except end;
   try value.TryGetValue<string>('fmp_webhook_token', self.FFmp_webhook_token); except end;
+  try value.TryGetValue<string>('fmp_data_expiracao', self.FFmp_data_expiracao); except end;
   try value.TryGetValue<double>('fmp_desconto_valor', self.FFmp_desconto_valor); except end;
   try value.TryGetValue<string>('fmp_sacado_cnpj_cpf', self.FFmp_sacado_cnpj_cpf); except end;
   try value.TryGetValue<string>('fmp_sacado_endereco', self.FFmp_sacado_endereco); except end;
   try value.TryGetValue<string>('fmp_ultima_alteracao', self.FFmp_ultima_alteracao); except end;
+  try value.TryGetValue<integer>('fmp_cobranca_gerada_por', self.FFmp_cobranca_gerada_por); except end;
   try value.TryGetValue<integer>('fmp_financeiro_conta_idpk', self.FFmp_financeiro_conta_idpk); except end;
+  try value.TryGetValue<string>('fmp_link_compartilhamento', self.FFmp_link_compartilhamento); except end;
   try value.TryGetValue<string>('fmp_sacado_endereco_numero', self.FFmp_sacado_endereco_numero); except end;
   try value.TryGetValue<double>('fmp_cobranca_valor_recebido', self.FFmp_cobranca_valor_recebido); except end;
   try value.TryGetValue<string>('fmp_financeiro_conta_idpk_2', self.FFmp_financeiro_conta_idpk_2); except end;
@@ -437,9 +398,9 @@ begin
       end;
   except
   end;
-  try value.TryGetValue<integer>('total_registros', self.FTotal_registros); except end;
   try value.TryGetValue<string>('status', self.FStatus); except end;
   try value.TryGetValue<string>('codigo', self.FCodigo); except end;
+  try value.TryGetValue<integer>('total_registros', self.FTotal_registros); except end;
   try value.TryGetValue<string>('tag', self.FTag); except end;
   try value.TryGetValue<string>('mensagem', self.FMensagem); except end;
   try value.TryGetValue<string>('mensagem_original', self.FMensagem_original); except end;
@@ -457,4 +418,3 @@ begin
 end;
 
 end.
-

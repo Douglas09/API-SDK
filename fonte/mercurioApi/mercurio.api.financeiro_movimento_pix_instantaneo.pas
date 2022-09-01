@@ -360,6 +360,10 @@ type
     ['{B488820D-A3AA-40E4-9D05-4C652EE2A80A}']
     function setFinanceiroMovimentoIdpk(const value : string) : IFinanceiroMovimentoPixInstantaneoPost;
     function getFinanceiroMovimentoIdpk : string;
+    /// <summary> Gerar e compartilhar link da cobrança PIX ao inserir </summary>
+    function setGerarLinkCompartilhamento(const value : boolean) : IFinanceiroMovimentoPixInstantaneoPost;
+    /// <summary> Gerar e compartilhar link da cobrança PIX ao inserir </summary>
+    function getGerarLinkCompartilhamento : boolean;
 
     /// <summary> Adiciona um novo pix ao payload via classe </summary>
     function addFinanceiroMovimentoPix(const value : IFinanceiroMovimentoPix) : IFinanceiroMovimentoPixInstantaneoPost;
@@ -371,6 +375,7 @@ type
   TFinanceiroMovimentoPixInstantaneoPost = class(TPayloadPost, IFinanceiroMovimentoPixInstantaneoPost)
   private
     FFinanceiroMovimentoIdpk : string;
+    FGerarLinkCompartilhamento : boolean;
   public
     class function new : IFinanceiroMovimentoPixInstantaneoPost;
     constructor Create;
@@ -378,6 +383,10 @@ type
 
     function setFinanceiroMovimentoIdpk(const value : string) : IFinanceiroMovimentoPixInstantaneoPost;
     function getFinanceiroMovimentoIdpk : string;
+    /// <summary> Gerar e compartilhar link da cobrança PIX ao inserir </summary>
+    function setGerarLinkCompartilhamento(const value : boolean) : IFinanceiroMovimentoPixInstantaneoPost;
+    /// <summary> Gerar e compartilhar link da cobrança PIX ao inserir </summary>
+    function getGerarLinkCompartilhamento : boolean;
     /// <summary> Adiciona um novo pix ao payload via classe </summary>
     function addFinanceiroMovimentoPix(const value : IFinanceiroMovimentoPix) : IFinanceiroMovimentoPixInstantaneoPost;
     /// <summary> Monta o payload </summary>
@@ -748,6 +757,7 @@ constructor TFinanceiroMovimentoPixInstantaneoPost.Create;
 begin
   inherited Create;
   FFinanceiroMovimentoIdpk := '';
+  FGerarLinkCompartilhamento := false;
 end;
 
 destructor TFinanceiroMovimentoPixInstantaneoPost.Destroy;
@@ -761,6 +771,11 @@ begin
   result := FFinanceiroMovimentoIdpk;
 end;
 
+function TFinanceiroMovimentoPixInstantaneoPost.getGerarLinkCompartilhamento: boolean;
+begin
+  result := FGerarLinkCompartilhamento;
+end;
+
 class function TFinanceiroMovimentoPixInstantaneoPost.new: IFinanceiroMovimentoPixInstantaneoPost;
 begin
   result := TFinanceiroMovimentoPixInstantaneoPost.Create;
@@ -770,6 +785,12 @@ function TFinanceiroMovimentoPixInstantaneoPost.setFinanceiroMovimentoIdpk(const
 begin
   result := self;
   FFinanceiroMovimentoIdpk := value;
+end;
+
+function TFinanceiroMovimentoPixInstantaneoPost.setGerarLinkCompartilhamento(const value: boolean): IFinanceiroMovimentoPixInstantaneoPost;
+begin
+  result := self;
+  FGerarLinkCompartilhamento := value;
 end;
 
 function TFinanceiroMovimentoPixInstantaneoPost.ToJson: TJSONValue;
@@ -782,6 +803,8 @@ begin
   result := inherited;
   if (FFinanceiroMovimentoIdpk <> '') then
     result := AddHeaderParams(result, 'financeiro_movimento_idpk='+ FFinanceiroMovimentoIdpk);
+  if (FGerarLinkCompartilhamento) then
+    result := AddHeaderParams(result, 'gerar_link_compartilhamento=S');
 
   if (trim(result) <> '') and not (copy(result, 1, 1) = '?') then
     result := '?'+ result;
