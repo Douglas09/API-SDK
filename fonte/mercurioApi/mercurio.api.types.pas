@@ -8,8 +8,8 @@ uses mercurio.api.classes, mercurio.api.login, mercurio.api.communication, mercu
      mercurio.api.financeiro_movimento_pix_instantaneo, mercurio.api.financeiro_conta,
      mercurio.api.usuario_empresa_push_notification, mercurio.response.usuarioEmpresaPushNotificationGet,
      mercurio.api.aplicativo, mercurio.api.financeiro_movimento_boleto.delete,
-  mercurio.api.financeiro_movimento_boleto.get, mercurio.api.financeiro_movimento_boleto.Liquidar,
-  mercurio.api.financeiro_movimento_boleto.post, mercurio.api.financeiro_movimento_boleto;
+     mercurio.api.financeiro_movimento_boleto.get, mercurio.api.financeiro_movimento_boleto.Liquidar,
+     mercurio.api.financeiro_movimento_boleto.post, mercurio.api.financeiro_movimento_boleto;
 
 type
   //MERCURIO.API.COMMUNICATION
@@ -226,6 +226,10 @@ type
   TPixComprovantePagamentoPDF = mercurio.api.financeiro_movimento_pix_instantaneo.TPixComprovantePagamentoPDF;
   IResponsePixComprovantePagamentoPDF = mercurio.api.financeiro_movimento_pix_instantaneo.IResponsePixComprovantePagamentoPDF;
   TResponsePixComprovantePagamentoPDF = mercurio.api.financeiro_movimento_pix_instantaneo.TResponsePixComprovantePagamentoPDF;
+  IPixDevolver = mercurio.api.financeiro_movimento_pix_instantaneo.IPixDevolver;
+  TPixDevolver = mercurio.api.financeiro_movimento_pix_instantaneo.TPixDevolver;
+  IResponseFinanceiroMovimentoPixDevolver = mercurio.api.financeiro_movimento_pix_instantaneo.IResponseFinanceiroMovimentoPixDevolver;
+  TResponseFinanceiroMovimentoPixDevolver = mercurio.api.financeiro_movimento_pix_instantaneo.TResponseFinanceiroMovimentoPixDevolver;
 
   //MERCURIO.API.FINANCEIRO_MOVIMENTO_BOLETO
   IBoleto = mercurio.api.financeiro_movimento_boleto.IBoleto;

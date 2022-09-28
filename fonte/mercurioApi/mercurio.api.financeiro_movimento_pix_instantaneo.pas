@@ -6,9 +6,39 @@ uses mercurio.api.parent, json, mercurio.api.classes, mercurio.api.functions,
      mercurio.response.financeiroMovimentoPixInstantaneo.get,
      mercurio.response.financeiroMovimentoPixInstantaneo.post,
      mercurio.response.financeiroMovimentoPixInstantaneo.delete,
-     mercurio.response.financeiroMovimentoPix.getComprovantePagamentoPDF;
+     mercurio.response.financeiroMovimentoPix.getComprovantePagamentoPDF,
+     mercurio.response.financeiroMovimentoPix.PixDevolver;
 
 type
+  IPixDevolver = interface
+    ['{F918A925-AA39-41B7-8ECC-ED019DE8E9E9}']
+    /// <summary> Código único da empresa </summary>
+    function setEmpresaIdpk(const value : string) : IPixDevolver;
+    /// <summary> Código único da empresa </summary>
+    function getEmpresaIdpk : string;
+    /// <summary> Código único do registro </summary>
+    function setIdpk(const value : string) : IPixDevolver;
+    /// <summary> Código único do registro </summary>
+    function getIdpk : string;
+  end;
+  TPixDevolver = class(TInterfacedObject, IPixDevolver)
+  private
+    FEmpresaIdpk: string;
+    FIdpk: string;
+  public
+    class function new : IPixDevolver;
+    constructor Create;
+
+    /// <summary> Código único da empresa </summary>
+    function setEmpresaIdpk(const value : string) : IPixDevolver;
+    /// <summary> Código único da empresa </summary>
+    function getEmpresaIdpk : string;
+    /// <summary> Código único do registro </summary>
+    function setIdpk(const value : string) : IPixDevolver;
+    /// <summary> Código único do registro </summary>
+    function getIdpk : string;
+  end;
+
   IPixComprovantePagamentoPDF = interface
     ['{3AF2901D-6C50-40A8-8EC7-195309D3D337}']
     /// <summary> Código único do registro </summary>
@@ -340,6 +370,22 @@ type
     function toParams : string; override;
   end;
 
+  IResponseFinanceiroMovimentoPixDevolver = interface(IResponse)
+    ['{43162C4A-C3E1-4982-B7A2-FC78EB6CA93C}']
+    /// <summary> Variável para acessar o retorno da api via classe </summary>
+    function Obj : TResponseClassPixDevolver;
+  end;
+  TResponseFinanceiroMovimentoPixDevolver = class(TResponse, IResponseFinanceiroMovimentoPixDevolver)
+  private
+    FObj : TResponseClassPixDevolver;
+  public
+    class function new(parent : IResponse) : IResponseFinanceiroMovimentoPixDevolver;
+    constructor Create(pResponse : IHTTPResponse; pResponseData : string);
+    destructor Destroy; override;
+    /// <summary> Variável para acessar o retorno da api via classe </summary>
+    function Obj : TResponseClassPixDevolver;
+  end;
+
   IResponseFinanceiroMovimentoPixInstantaneoGet = interface(IResponse)
     ['{5127561E-C6D0-4E67-8074-D8C36EE507FD}']
     /// <summary> Variável para acessar o retorno da api via classe </summary>
@@ -442,6 +488,8 @@ type
 
   TMercurioFinanceiroMovimentoPix = class(TMercurioPai)
   public
+    /// <summary> Efetua a devolução de um acobrança pix </summary>
+    function Devolver(var params : IPixDevolver) : IResponseFinanceiroMovimentoPixDevolver;
     /// <summary> Captura o comprovante de pgto em PDF de um pix </summary>
     function GetComprovantePagamentoPDF(var params : IPixComprovantePagamentoPDF) : IResponsePixComprovantePagamentoPDF;
     /// <summary> Busca um ou mais pix na base da empresa </summary>
@@ -652,6 +700,12 @@ begin
         OnInternalError(self, E.Message);
     end;
   end;
+end;
+
+function TMercurioFinanceiroMovimentoPix.Devolver(
+  var params: IPixDevolver): IResponseFinanceiroMovimentoPixDevolver;
+begin
+
 end;
 
 function TMercurioFinanceiroMovimentoPix.Get(var params: IFinanceiroMovimentoPixInstantaneoGet): IResponseFinanceiroMovimentoPixInstantaneoGet;
@@ -1420,6 +1474,65 @@ begin
 end;
 
 function TResponsePixComprovantePagamentoPDF.Obj: TResponseClassPixComprovantePagamentoPDF;
+begin
+  result := FObj;
+end;
+
+{ TPixDevolver }
+
+constructor TPixDevolver.Create;
+begin
+  FEmpresaIdpk := '';
+  FIdpk := '';
+end;
+
+function TPixDevolver.getEmpresaIdpk: string;
+begin
+  result := FEmpresaIdpk;
+end;
+
+function TPixDevolver.getIdpk: string;
+begin
+  result := FIdpk;
+end;
+
+class function TPixDevolver.new: IPixDevolver;
+begin
+  result := TPixDevolver.Create;
+end;
+
+function TPixDevolver.setEmpresaIdpk(const value: string): IPixDevolver;
+begin
+  result := self;
+  FEmpresaIdpk := value;
+end;
+
+function TPixDevolver.setIdpk(const value: string): IPixDevolver;
+begin
+  result := self;
+  FIdpk := value;
+end;
+
+{ TResponseFinanceiroMovimentoPixDevolver }
+
+constructor TResponseFinanceiroMovimentoPixDevolver.Create(pResponse: IHTTPResponse; pResponseData: string);
+begin
+  inherited Create(pResponse, pResponseData);
+  FObj := TResponseClassPixDevolver.CreateWithJsonString(self.GetResponseData);
+end;
+
+destructor TResponseFinanceiroMovimentoPixDevolver.Destroy;
+begin
+  MyFreeAndNil(FObj);
+  inherited;
+end;
+
+class function TResponseFinanceiroMovimentoPixDevolver.new(parent: IResponse): IResponseFinanceiroMovimentoPixDevolver;
+begin
+  result := TResponseFinanceiroMovimentoPixDevolver.Create(parent.GetResponse, parent.GetResponseData);
+end;
+
+function TResponseFinanceiroMovimentoPixDevolver.Obj: TResponseClassPixDevolver;
 begin
   result := FObj;
 end;

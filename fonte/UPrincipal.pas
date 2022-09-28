@@ -660,6 +660,12 @@ type
     edtBDFinanceiroMovimentoIdpk: TEdit;
     Text258: TText;
     edtBDIdpk: TEdit;
+    TabItem58: TTabItem;
+    Text251: TText;
+    Edit1: TEdit;
+    Text253: TText;
+    Edit2: TEdit;
+    Button48: TButton;
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure rbHomologacaoChange(Sender: TObject);

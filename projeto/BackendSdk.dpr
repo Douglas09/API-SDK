@@ -77,7 +77,8 @@ uses
   mercurio.response.usuario.recuperarSenha in '..\fonte\mercurioApi\response\mercurio.response.usuario.recuperarSenha.pas',
   mercurio.response.usuarioEmpresaPushNotificationDelete in '..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationDelete.pas',
   mercurio.response.usuarioEmpresaPushNotificationGet in '..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationGet.pas',
-  mercurio.response.usuarioEmpresaPushNotificationPost in '..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationPost.pas';
+  mercurio.response.usuarioEmpresaPushNotificationPost in '..\fonte\mercurioApi\response\mercurio.response.usuarioEmpresaPushNotificationPost.pas',
+  mercurio.response.financeiroMovimentoPix.PixDevolver in '..\fonte\mercurioApi\response\mercurio.response.financeiroMovimentoPix.PixDevolver.pas';
 
 {$R *.res}
 
