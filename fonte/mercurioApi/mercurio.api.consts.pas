@@ -31,6 +31,7 @@ const
   urlPix = '/api/v1/FinanceiroMovimento/Pix';
   urlPixInstantaneo = '/api/v1/FinanceiroMovimento/PixInstantaneo';
   urlPixComprovantePagamento = '/api/v1/FinanceiroMovimento/PixPagamentoGerarPDF';
+  urlPixDevolver = '/api/v1/FinanceiroMovimento/EstornarPix';
   urlBoleto = '/api/v1/FinanceiroMovimento/Boleto';
   urlPushNotificationTokenBuscar = '/api/v1/PushNotificationToken/Buscar';
   urlPushNotificationTokenRemover = '/api/v1/PushNotificationToken/Remover';

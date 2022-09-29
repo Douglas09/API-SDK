@@ -10,33 +10,16 @@ uses mercurio.api.parent, json, mercurio.api.classes, mercurio.api.functions,
      mercurio.response.financeiroMovimentoPix.PixDevolver;
 
 type
-  IPixDevolver = interface
+  IPixDevolver = interface(IPayloadGet)
     ['{F918A925-AA39-41B7-8ECC-ED019DE8E9E9}']
-    /// <summary> Código único da empresa </summary>
-    function setEmpresaIdpk(const value : string) : IPixDevolver;
-    /// <summary> Código único da empresa </summary>
-    function getEmpresaIdpk : string;
-    /// <summary> Código único do registro </summary>
-    function setIdpk(const value : string) : IPixDevolver;
-    /// <summary> Código único do registro </summary>
-    function getIdpk : string;
+    /// <summary> Monta parâmetros para a URL </summary>
+    function toParams : string;
   end;
-  TPixDevolver = class(TInterfacedObject, IPixDevolver)
-  private
-    FEmpresaIdpk: string;
-    FIdpk: string;
+  TPixDevolver = class(TPayloadGet, IPixDevolver)
   public
     class function new : IPixDevolver;
-    constructor Create;
-
-    /// <summary> Código único da empresa </summary>
-    function setEmpresaIdpk(const value : string) : IPixDevolver;
-    /// <summary> Código único da empresa </summary>
-    function getEmpresaIdpk : string;
-    /// <summary> Código único do registro </summary>
-    function setIdpk(const value : string) : IPixDevolver;
-    /// <summary> Código único do registro </summary>
-    function getIdpk : string;
+    /// <summary> Monta parâmetros para a URL </summary>
+    function toParams : string; override;
   end;
 
   IPixComprovantePagamentoPDF = interface
@@ -702,10 +685,29 @@ begin
   end;
 end;
 
-function TMercurioFinanceiroMovimentoPix.Devolver(
-  var params: IPixDevolver): IResponseFinanceiroMovimentoPixDevolver;
+function TMercurioFinanceiroMovimentoPix.Devolver(var params: IPixDevolver): IResponseFinanceiroMovimentoPixDevolver;
+var url : string;
 begin
+  result := nil;
+  if not (assigned(params)) then
+    exit
+  else if (Trim(Auth.Token) = '') then
+  begin
+    OnInternalError(self, 'Para utilizar este recurso você precisa estar autenticado na API.');
+    exit;
+  end;
 
+  try
+    url := getUrl(Ambiente, urlPixDevolver) + params.toParams;
+    Api.HeaderCustomAdd('Authorization', 'Bearer '+ Auth.Token);
+    result := TResponseFinanceiroMovimentoPixDevolver.new(Api.Post(url));
+  except
+    on E : Exception do
+    begin
+      if (assigned(OnInternalError)) then
+        OnInternalError(self, E.Message);
+    end;
+  end;
 end;
 
 function TMercurioFinanceiroMovimentoPix.Get(var params: IFinanceiroMovimentoPixInstantaneoGet): IResponseFinanceiroMovimentoPixInstantaneoGet;
@@ -1480,37 +1482,21 @@ end;
 
 { TPixDevolver }
 
-constructor TPixDevolver.Create;
-begin
-  FEmpresaIdpk := '';
-  FIdpk := '';
-end;
-
-function TPixDevolver.getEmpresaIdpk: string;
-begin
-  result := FEmpresaIdpk;
-end;
-
-function TPixDevolver.getIdpk: string;
-begin
-  result := FIdpk;
-end;
-
 class function TPixDevolver.new: IPixDevolver;
 begin
   result := TPixDevolver.Create;
 end;
 
-function TPixDevolver.setEmpresaIdpk(const value: string): IPixDevolver;
+function TPixDevolver.toParams: string;
+var data : string;
 begin
-  result := self;
-  FEmpresaIdpk := value;
-end;
-
-function TPixDevolver.setIdpk(const value: string): IPixDevolver;
-begin
-  result := self;
-  FIdpk := value;
+  result := '';
+  if (self.getEmpresaIdpk <> '') then
+    result := AddParam(result, 'empresa_idpk='+ self.getEmpresaIdpk);
+  if (self.getIdpk <> '') then
+    result := AddParam(result, 'pix_idpk='+ self.getIdpk);
+  if (trim(result) <> '') then
+    result := '?'+ result;
 end;
 
 { TResponseFinanceiroMovimentoPixDevolver }
