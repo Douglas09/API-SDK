@@ -280,6 +280,9 @@ begin
     result := TResponseLogar.new(FApi.Post(url, payload));
 
     response := TJSONObject(TJSONObject.ParseJSONValue(result.GetResponseData));
+
+    TFile.WriteAllText('C:\a\1.txt', ' '+ response.Format());
+
     if (response = nil) then
       exit;
 

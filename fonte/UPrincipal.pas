@@ -992,7 +992,10 @@ begin
     btnLogof.Enabled := true;
   end;
 
-  exibirMensagem(memLogin, response);
+  memLogin.Lines.Add(response.GetResponseData);
+
+
+//  exibirMensagem(memLogin, response);
 end;
 
 procedure TFrmPrincipal.Button20Click(Sender: TObject);
