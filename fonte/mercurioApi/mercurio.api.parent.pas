@@ -81,6 +81,8 @@ type
     function setTotalRegistros(const value : boolean = false) : IPayloadGet;
     /// <summary> Paginação -> Retorna a quantidade total de registros existentes </summary>
     function getTotalRegistros : boolean;
+    /// <summary> Caso preenchido, filtra todos os registros que sofreram alteração após a data informada </summary>
+    function setUltimaAlteracao(const value : TDateTime) : IPayloadGet;
 
     /// <summary> Monta parâmetros para a URL </summary>
     function toParams : string;
@@ -96,6 +98,7 @@ type
     FRegistroInicial : string;
     FQtdeRegistros : string;
     FTotalRegistros : boolean;
+    FUltimaAlteracao : TDateTime;
   protected
 
     function AddParam(const paramsList, new : string) : string;
@@ -139,6 +142,8 @@ type
     function setTotalRegistros(const value : boolean = false) : IPayloadGet;
     /// <summary> Paginação -> Retorna a quantidade total de registros existentes </summary>
     function getTotalRegistros : boolean;
+    /// <summary> Caso preenchido, filtra todos os registros que sofreram alteração após a data informada </summary>
+    function setUltimaAlteracao(const value : TDateTime) : IPayloadGet;
 
     /// <summary> Monta parâmetros para a URL </summary>
     function toParams : string; virtual;
@@ -413,6 +418,7 @@ begin
   FTotalRegistros := false;
   FRegistroInicial := '0';
   FQtdeRegistros := '10';
+  FUltimaAlteracao := 0;
 end;
 
 destructor TPayloadGet.Destroy;
@@ -514,6 +520,12 @@ begin
   FTotalRegistros := value;
 end;
 
+function TPayloadGet.setUltimaAlteracao(const value: TDateTime): IPayloadGet;
+begin
+  result := self;
+  FUltimaAlteracao := value;
+end;
+
 function TPayloadGet.setWhere(const value: string): IPayloadGet;
 begin
   result := self;
@@ -544,6 +556,9 @@ begin
     params := AddParam(params, 'qtde_registros='+ FQtdeRegistros);
   if (FTotalRegistros) then
     params := AddParam(params, 'total_registros=S');
+  if (FUltimaAlteracao <> 0) then
+    result := AddParam(result, 'ultima_alteracao='+
+      FormatDateTime('DD-MM-YYYY HH:MM:SS', FUltimaAlteracao));
 
   if (params <> '') then
     result := result +'?'+ params;

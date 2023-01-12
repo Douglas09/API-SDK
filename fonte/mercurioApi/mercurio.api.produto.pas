@@ -1156,6 +1156,8 @@ end;
 
 constructor TProdutoGet.Create;
 begin
+  inherited Create;
+
   FCodigoInterno := '';
   FCodigoAuxiliar := '';
   FNome := '';

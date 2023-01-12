@@ -279,7 +279,7 @@ type
     function setCodigoAuxiliar(const value : string) : IClienteGet;
     /// <summary> Código auxiliar do cliente </summary>
     function getCodigoAuxiliar : string;
-
+    
     /// <summary> Monta parâmetros para a URL </summary>
     function toParams : string; override;
   end;
@@ -505,7 +505,7 @@ uses
 
 constructor TClienteGet.Create;
 begin
-
+  inherited Create;
 end;
 
 destructor TClienteGet.Destroy;

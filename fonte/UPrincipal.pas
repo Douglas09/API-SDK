@@ -763,6 +763,7 @@ begin
   payload.setNomeEmpresa(cliConEmpresaNome.Text);
   payload.setDocumento(cliConDocumento.Text);
   payload.setCodigoAuxiliar(cliConCodigoAuxiliar.Text);
+  payload.setUltimaAlteracao(strToDateTime('01/01/2023 01:01:01'));
 
   response := sdk.Cliente.Get(payload);
   exibirMensagem(memResponse, response);
