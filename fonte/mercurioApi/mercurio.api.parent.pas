@@ -557,7 +557,7 @@ begin
   if (FTotalRegistros) then
     params := AddParam(params, 'total_registros=S');
   if (FUltimaAlteracao <> 0) then
-    result := AddParam(result, 'ultima_alteracao='+
+    params := AddParam(params, 'ultima_alteracao='+
       FormatDateTime('DD-MM-YYYY HH:MM:SS', FUltimaAlteracao));
 
   if (params <> '') then
